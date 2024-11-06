@@ -19,3 +19,12 @@ class TestParkingGarage(TestCase):
     def test_check_occupancy_raises_error(self):
         system = ParkingGarage()
         self.assertRaises(ParkingGarageError, system.check_occupancy, -1)
+
+    @patch.object(GPIO, "input")
+    def test_get_number_occupied_spots(self,mock_distance_sensor: Mock):
+        mock_distance_sensor.side_effect = [True, False, True]
+        system = ParkingGarage()
+        number = system.get_number_occupied_spots()
+        self.assertEqual(2, number)
+
+
