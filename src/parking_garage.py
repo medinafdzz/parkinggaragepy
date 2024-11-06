@@ -66,8 +66,8 @@ class ParkingGarage:
 
         fee = count * 2.5
 
-        if exit_time.weekday() in [5, 6]:
-            fee = fee + 1.25
+        if entry_time.weekday() in [5, 6]:
+            return fee * 1.25
 
         return fee
 
