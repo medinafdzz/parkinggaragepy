@@ -41,4 +41,11 @@ class TestParkingGarage(TestCase):
         fee = system.calculate_parking_fee(datetime(2024, 11, 3, 14, 0))
         self.assertEqual(9.375,fee)
 
+    @patch.object(ParkingGarage, "change_servo_angle")
+    def test_open_garage_door(self, mock_servo: Mock):
+        system = ParkingGarage()
+        system.open_garage_door()
+        mock_servo.assert_called_with(12)
+
+
 
