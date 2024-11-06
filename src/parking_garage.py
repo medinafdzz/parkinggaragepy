@@ -78,15 +78,18 @@ class ParkingGarage:
 
     def close_garage_door(self) -> None:
         # To be implemented
-        pass
+        self.change_servo_angle(0)
+        self.door_open = False
 
     def turn_on_red_light(self) -> None:
         # To be implemented
-        pass
+        GPIO.output(self.LED_PIN, True)
+        self.red_light_on = True
 
     def turn_off_red_light(self) -> None:
-        # To be implemented
-        pass
+        #To be implemented
+        GPIO.output(self.LED_PIN, False)
+        self.red_light_on = False
 
     def manage_red_light(self) -> None:
         # To be implemented
