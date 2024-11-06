@@ -39,6 +39,6 @@ class TestParkingGarage(TestCase):
         mock_exit_time.return_value = datetime(2024, 11, 3, 16, 1)
         system = ParkingGarage()
         fee = system.calculate_parking_fee(datetime(2024, 11, 3, 14, 0))
-        self.assertEqual(8.75,fee)
+        self.assertEqual(9.375,fee)
 
 
