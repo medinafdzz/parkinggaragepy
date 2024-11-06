@@ -61,15 +61,14 @@ class TestParkingGarage(TestCase):
         mock_light.assert_called_with(system.LED_PIN, False)
         self.assertFalse(system.red_light_on)
 
-    @patch.object(ParkingGarage, "output")
+    @patch.object(GPIO, "output")
     @patch.object(ParkingGarage, "get_number_occupied_spots")
-    def test_manage_light(self, mock_spots: Mock, mock_light: Mock):
+    def test_manage_red_light(self, mock_spots: Mock, mock_light: Mock):
         mock_spots.return_value = 3
         system = ParkingGarage()
         system.manage_red_light()
         mock_light.assert_called_with(system.LED_PIN, True)
         self.assertTrue(system.red_light_on)
-
 
 
 
