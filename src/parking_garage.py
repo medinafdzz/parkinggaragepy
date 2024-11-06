@@ -51,7 +51,8 @@ class ParkingGarage:
 
     def calculate_parking_fee(self, entry_time: datetime) -> float:
         # To be implemented
-        pass
+        exit_time = self.rtc.read_datetime()
+
 
     def open_garage_door(self) -> None:
         # To be implemented
