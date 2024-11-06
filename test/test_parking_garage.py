@@ -31,6 +31,6 @@ class TestParkingGarage(TestCase):
     def test_calculate_parking_fee(self, mock_exit_time: Mock):
         mock_exit_time.return_value = datetime(2024, 11, 6, 16, 0)
         system = ParkingGarage()
-        fee = system.calculate_parking_fee()
+        fee = system.calculate_parking_fee(datetime(2024, 11, 6, 15, 0))
 
 
