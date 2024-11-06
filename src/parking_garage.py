@@ -60,11 +60,16 @@ class ParkingGarage:
         exit_minute = exit_time.minute
 
         count = exit_hour - entry_hour
+
         if exit_minute - entry_minute > 0:
             count += 1
 
-        return count * 2.5
+        fee = count * 2.5
 
+        if exit_time.weekday() in [5, 6]:
+            fee = fee + 1.25
+
+        return fee
 
     def open_garage_door(self) -> None:
         # To be implemented
