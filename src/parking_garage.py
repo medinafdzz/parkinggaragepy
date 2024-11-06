@@ -37,11 +37,17 @@ class ParkingGarage:
 
     def check_occupancy(self, pin: int) -> bool:
         # To be implemented
-        return GPIO.input(pin)
+        if pin in [self.INFRARED_PIN1, self.INFRARED_PIN2, self.INFRARED_PIN3]:
+            return GPIO.input(pin)
+        raise ParkingGarageError("Invalid pin number")
 
     def get_number_occupied_spots(self) -> int:
         # To be implemented
-        pass
+        count = 0
+        for pin in [self.INFRARED_PIN1, self.INFRARED_PIN2, self.INFRARED_PIN3]:
+            if self.check_occupancy(pin):
+                count += 1
+        return count
 
     def calculate_parking_fee(self, entry_time: datetime) -> float:
         # To be implemented
